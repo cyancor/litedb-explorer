@@ -26,15 +26,12 @@
                     BackgroundSource="Digger" />
             </ExperimentalAcrylicBorder.Material>
             <avaloniaEdit:TextEditor
-                Margin="{OnPlatform Default='0, 0, 0, 0', macOS='0, 50, 0, 0'}"
+                Margin="{OnPlatform Default='0, 40, 0, 0', Linux='0, 0, 0, 0'}"
                 Background="Transparent"
                 Name="TextEditor"
                 ShowLineNumbers="True"
                 IsReadOnly="True"
                 FontFamily="Menlo,Cascadia Code,Consolas,Monospace">
-                <!-- <Interaction.Behaviors> -->
-                <!--     <behaviours:DocumentTextBindingBehavior Text="{Binding Document, Mode=TwoWay}"/> -->
-                <!-- </Interaction.Behaviors> -->
             </avaloniaEdit:TextEditor>
         </ExperimentalAcrylicBorder>
     </Grid>
