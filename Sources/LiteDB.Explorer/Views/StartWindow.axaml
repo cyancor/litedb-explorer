@@ -1,0 +1,65 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="LiteDB.Explorer.Views.StartWindow"
+        xmlns:models="clr-namespace:LiteDB.Explorer.Models"
+        xmlns:views="clr-namespace:LiteDB.Explorer.Views"
+        xmlns:viewModels="clr-namespace:LiteDB.Explorer.ViewModels"
+        Title="LiteDB.Explorer"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
+        ExtendClientAreaToDecorationsHint="True"
+        Width="600"
+        Height="350"
+        x:DataType="viewModels:StartViewModel">
+    <Grid ColumnDefinitions="250, *">
+        <ExperimentalAcrylicBorder >
+            <ExperimentalAcrylicBorder.Material>
+                <ExperimentalAcrylicMaterial
+                    FallbackColor="Black"
+                    TintColor="Black"
+                    TintOpacity="93.0"
+                    MaterialOpacity="0.5"
+                    BackgroundSource="Digger" />
+            </ExperimentalAcrylicBorder.Material>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Width="140" Source="avares://LiteDB.Explorer/Assets/Logo.png"></Image>
+
+                <Button
+                    Margin="0, 50, 0, 0"
+                    CornerRadius="10"
+                    Padding="10"
+                    Click="OpenNew">
+                    Open New Database
+                </Button>
+            </StackPanel>
+        </ExperimentalAcrylicBorder>
+
+        <ExperimentalAcrylicBorder Grid.Column="1">
+            <ExperimentalAcrylicBorder.Material>
+                <ExperimentalAcrylicMaterial
+                    FallbackColor="Black"
+                    TintColor="Black"
+                    TintOpacity="55.0"
+                    MaterialOpacity="0.5"
+                    BackgroundSource="Digger" />
+            </ExperimentalAcrylicBorder.Material>
+            <ListBox
+                Background="Transparent"
+                ItemsSource="{Binding Recents}"
+                SelectedItem="{Binding SelectedDatabase}"
+                DoubleTapped="OnRecentEntryClicked">
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:DataType="models:RecentDatabase">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                            <TextBlock Opacity="0.6" FontSize="12" Text="{Binding Path}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ExperimentalAcrylicBorder>
+    </Grid>
+</Window>

@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.1.3" />
+        <PackageReference Include="Avalonia.AvaloniaEdit" Version="11.1.0" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.1.3" />
+        <PackageReference Include="Avalonia.Controls.ItemsRepeater" Version="11.1.3" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.1.3" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="11.1.3" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.3" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.3" />
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.3" />
+        <PackageReference Include="Avalonia.Xaml.Interactions" Version="11.1.0.4" />
+        <PackageReference Include="AvaloniaEdit.TextMate" Version="11.1.0" />
+        <PackageReference Include="LiteDB.Async" Version="0.1.8" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="PropertyChanged.SourceGenerator" Version="1.0.8">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="ReactiveUI.SourceGenerators" Version="1.1.31" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\LightDBExplorer Light.png" />
+      <AvaloniaResource Include="Assets\Logo.png" />
+      <None Remove="Assets\Play.png" />
+      <AvaloniaResource Include="Assets\Play.png" />
+      <None Remove="Assets\Table.png" />
+      <AvaloniaResource Include="Assets\Table.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\StartWindow.axaml.cs">
+        <DependentUpon>MainWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+</Project>

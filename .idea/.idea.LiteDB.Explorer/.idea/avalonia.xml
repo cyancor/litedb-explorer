@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Sources/LiteDB.Explorer/App.axaml" value="Sources/LiteDB.Explorer/LiteDB.Explorer.csproj" />
+        <entry key="Sources/LiteDB.Explorer/MainWindow.axaml" value="Sources/LiteDB.Explorer/LiteDB.Explorer.csproj" />
+        <entry key="Sources/LiteDB.Explorer/Views/DatabaseEntryWindow.axaml" value="Sources/LiteDB.Explorer/LiteDB.Explorer.csproj" />
+        <entry key="Sources/LiteDB.Explorer/Views/MainWindow.axaml" value="Sources/LiteDB.Explorer/LiteDB.Explorer.csproj" />
+        <entry key="Sources/LiteDB.Explorer/Views/StartWindow.axaml" value="Sources/LiteDB.Explorer/LiteDB.Explorer.csproj" />
+        <entry key="Sources/LiteDB.Explorer/Views/ToolbarView.axaml" value="Sources/LiteDB.Explorer/LiteDB.Explorer.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
