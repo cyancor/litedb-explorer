@@ -33,7 +33,7 @@
             </ExperimentalAcrylicBorder.Material>
             <ListBox
                 Background="Transparent"
-                Margin="0, 40, 0, 0"
+                Margin="{OnPlatform Default='0, 0, 0, 0', macOS='0, 40, 0, 0'}"
                 SelectedItem="{Binding SelectedCollection}"
                 SelectionChanged="OnSelectionChanged"
                 DoubleTapped="OnDoubleTapped"
@@ -66,7 +66,6 @@
             </ListBox>
         </ExperimentalAcrylicBorder>
 
-
         <GridSplitter Grid.Column="1" MinWidth="3" Background="Black" ResizeDirection="Columns"/>
 
         <ExperimentalAcrylicBorder Grid.Column="2">
@@ -79,11 +78,12 @@
                     BackgroundSource="Digger" />
             </ExperimentalAcrylicBorder.Material>
 
-            <Grid RowDefinitions="40, *">
-                <views:ToolbarView IsHitTestVisible="False" Grid.Row="0" />
+            <Grid RowDefinitions="{OnPlatform Default='0, *', macOS='40, *'}">
+                <views:ToolbarView
+                    IsVisible="{OnPlatform Default=False, macOS=True}"
+                    IsHitTestVisible="False" Grid.Row="0" />
 
                 <Grid RowDefinitions="100, 1, *" Background="Black" Grid.Row="1">
-
                     <Grid>
                         <avaloniaEdit:TextEditor
                             Background="#1F1F24"
