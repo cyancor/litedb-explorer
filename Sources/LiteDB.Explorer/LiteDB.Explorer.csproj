@@ -1,11 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
+        <RuntimeIdentifiers>osx-arm64;osx-x64</RuntimeIdentifiers>
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
+        <UseAppHost>true</UseAppHost>
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <CFBundleName>LiteDB Explorer</CFBundleName> <!-- Also defines .app file name -->
+        <CFBundleDisplayName>LiteDB Explorer</CFBundleDisplayName>
+        <CFBundleIdentifier>com.cyancor.LiteDBExplorer</CFBundleIdentifier>
+        <CFBundleVersion>0.1.0</CFBundleVersion>
+        <CFBundleShortVersionString>0.1.0</CFBundleShortVersionString>
+        <CFBundlePackageType>APPL</CFBundlePackageType>
+        <CFBundleSignature>????</CFBundleSignature>
+        <CFBundleExecutable>LiteDB.Explorer</CFBundleExecutable>
+        <CFBundleIconFile>Assets/LiteDBExplorer.icns</CFBundleIconFile> <!-- Will be copied from output directory -->
+        <NSPrincipalClass>NSApplication</NSPrincipalClass>
+        <NSHighResolutionCapable>true</NSHighResolutionCapable>
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,6 +37,7 @@
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.3" />
         <PackageReference Include="Avalonia.Xaml.Interactions" Version="11.1.0.4" />
         <PackageReference Include="AvaloniaEdit.TextMate" Version="11.1.0" />
+        <PackageReference Include="DotNet.Bundle" Version="0.9.13" />
         <PackageReference Include="LiteDB.Async" Version="0.1.8" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
         <PackageReference Include="PropertyChanged.SourceGenerator" Version="1.0.8">
@@ -37,6 +54,9 @@
       <AvaloniaResource Include="Assets\Play.png" />
       <None Remove="Assets\Table.png" />
       <AvaloniaResource Include="Assets\Table.png" />
+      <None Update="Assets\LiteDBExplorer.icns">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <ItemGroup>

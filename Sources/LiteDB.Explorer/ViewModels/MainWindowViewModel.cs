@@ -1,17 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Avalonia.Threading;
-using DynamicData;
 using LiteDB.Async;
 using ReactiveUI;
 using ReactiveUI.SourceGenerators;
 
 namespace LiteDB.Explorer.ViewModels;
-
-public record EntryQuickView(string Id, Dictionary<string, object> Properties);
 
 public partial class MainWindowViewModel : ReactiveObject
 {
@@ -37,33 +33,32 @@ public partial class MainWindowViewModel : ReactiveObject
 
     private string GetValue(BsonValue? value)
     {
-        // if (value?.IsArray == true)
-        // {
-        //     return $"[{string.Join(", ", value.AsArray.RawValue)}]";
-        // }
-
         return value?.RawValue?.ToString() ?? "";
     }
 
-    public void GetEntries()
+    public async Task GetEntries()
     {
-        Entries = [];
-
-        var result = DatabaseInstance.UnderlyingDatabase.Execute(_query);
-
-        foreach (var rawValue in result.Current.AsDocument)
+        await Task.Run(() =>
         {
-            foreach (var document in rawValue.Value.AsArray)
+            ObservableCollection<Dictionary<string, string>> entries = [];
+            var result = DatabaseInstance.UnderlyingDatabase.Execute(_query);
+
+            foreach (var rawValue in result.Current.AsDocument)
             {
-                Dictionary<string, string> properties = new();
-
-                foreach (var property in document.AsDocument.RawValue)
+                foreach (var document in rawValue.Value.AsArray)
                 {
-                    properties[property.Key] = GetValue(property.Value);
-                }
+                    Dictionary<string, string> properties = new();
 
-                Entries.Add(properties);
+                    foreach (var property in document.AsDocument.RawValue)
+                    {
+                        properties[property.Key] = GetValue(property.Value);
+                    }
+
+                    entries.Add(properties);
+                }
             }
-        }
+
+            Entries = entries;
+        });
     }
 }
