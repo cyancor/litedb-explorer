@@ -33,7 +33,7 @@
             </ExperimentalAcrylicBorder.Material>
             <ListBox
                 Background="Transparent"
-                Margin="{OnPlatform Default='0, 0, 0, 0', macOS='0, 40, 0, 0'}"
+                Margin="{OnPlatform Default='0, 5, 0, 0', macOS='0, 40, 0, 0'}"
                 SelectedItem="{Binding SelectedCollection}"
                 SelectionChanged="OnSelectionChanged"
                 DoubleTapped="OnDoubleTapped"
@@ -78,9 +78,9 @@
                     BackgroundSource="Digger" />
             </ExperimentalAcrylicBorder.Material>
 
-            <Grid RowDefinitions="{OnPlatform Default='0, *', macOS='40, *'}">
+            <Grid RowDefinitions="{OnPlatform Default='40, *', Linux='0, *'}">
                 <views:ToolbarView
-                    IsVisible="{OnPlatform Default=False, macOS=True}"
+                    IsVisible="{OnPlatform Default=True, Linux=False}"
                     IsHitTestVisible="False" Grid.Row="0" />
 
                 <Grid RowDefinitions="100, 1, *" Background="Black" Grid.Row="1">
