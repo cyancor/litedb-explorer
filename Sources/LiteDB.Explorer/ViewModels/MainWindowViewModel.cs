@@ -39,7 +39,8 @@ public partial class MainWindowViewModel : ReactiveObject
     {
         await Task.Run(() =>
         {
-            ObservableCollection<Dictionary<string, string>> entries = [];
+            Entries = [];
+
             var result = DatabaseInstance.UnderlyingDatabase.Execute(_query);
 
             foreach (var rawValue in result.Current.AsDocument)
@@ -53,11 +54,9 @@ public partial class MainWindowViewModel : ReactiveObject
                         properties[property.Key] = GetValue(property.Value);
                     }
 
-                    entries.Add(properties);
+                    Entries.Add(properties);
                 }
             }
-
-            Entries = entries;
         });
     }
 }
